@@ -1,8 +1,7 @@
 import { Mail, ExternalLink, UserCheck, ArrowUpRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-const name = import.meta.env.VITE_DEVELOPER_NAME
-const email = import.meta.env.VITE_DEVELOPER_EMAIL
-const linkedin = import.meta.env.VITE_DEVELOPER_LINKEDIN
+import { site } from '../../config/site'
 
 const colHeading: React.CSSProperties = {
   fontSize: 12,
@@ -12,22 +11,25 @@ const colHeading: React.CSSProperties = {
   textTransform: 'uppercase',
 }
 
+const link: React.CSSProperties = {
+  color: 'var(--text-on-dark-soft)',
+  textDecoration: 'none',
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 6,
+  fontSize: 14,
+  transition: 'color 0.15s',
+}
+
 export function Footer() {
+  const { t } = useTranslation()
+  const { email, linkedin, name } = site.developer
+
   const linkHoverOn = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.color = 'var(--text-on-dark)'
   }
   const linkHoverOff = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.color = 'var(--text-on-dark-soft)'
-  }
-
-  const link: React.CSSProperties = {
-    color: 'var(--text-on-dark-soft)',
-    textDecoration: 'none',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 6,
-    fontSize: 14,
-    transition: 'color 0.15s',
   }
 
   return (
@@ -52,7 +54,6 @@ export function Footer() {
             borderBottom: '1px solid rgba(255,255,255,0.08)',
           }}
         >
-          {/* About */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 380 }}>
             <span
               style={{
@@ -63,32 +64,30 @@ export function Footer() {
                 color: 'var(--text-on-dark)',
               }}
             >
-              do100x.com
+              {t('footer.brand')}
             </span>
             <span style={{ fontSize: 14, color: 'var(--text-on-dark-soft)', lineHeight: 1.7 }}>
-              do100x builds simple, high-quality, AI-powered tools for students, professionals, and entrepreneurs — each one carefully designed to remove one real problem from your day, so you can spend more time on what actually matters.
+              {t('footer.about')}
             </span>
           </div>
 
-          {/* Product */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <span style={colHeading}>Product</span>
+            <span style={colHeading}>{t('footer.productHeading')}</span>
             <a
-              href="https://reader.do100x.com"
+              href={site.reader.url}
               target="_blank"
               rel="noopener noreferrer"
               style={link}
               onMouseEnter={linkHoverOn}
               onMouseLeave={linkHoverOff}
             >
-              Reader
+              {t('footer.reader')}
               <ArrowUpRight size={14} />
             </a>
           </div>
 
-          {/* Connect */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <span style={colHeading}>Connect</span>
+            <span style={colHeading}>{t('footer.connectHeading')}</span>
             <a
               href={`mailto:${email}`}
               style={link}
@@ -107,10 +106,10 @@ export function Footer() {
               onMouseLeave={linkHoverOff}
             >
               <ExternalLink size={14} />
-              LinkedIn
+              {t('footer.linkedin')}
             </a>
             <a
-              href={`mailto:${email}?subject=Let's%20work%20together`}
+              href={`mailto:${email}?subject=${encodeURIComponent(t('footer.hireMeSubject'))}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -135,12 +134,11 @@ export function Footer() {
               }}
             >
               <UserCheck size={14} />
-              Hire Me
+              {t('footer.hireMe')}
             </a>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div
           style={{
             display: 'flex',
@@ -153,8 +151,8 @@ export function Footer() {
             color: 'var(--text-on-dark-soft)',
           }}
         >
-          <span>&copy; {new Date().getFullYear()} do100x.com — All rights reserved.</span>
-          <span>Made with ❤️ by {name}</span>
+          <span>{t('footer.copyright', { year: new Date().getFullYear() })}</span>
+          <span>{t('footer.madeBy', { name })}</span>
         </div>
 
       </div>

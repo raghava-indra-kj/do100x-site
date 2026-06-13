@@ -1,6 +1,11 @@
 import { ExternalLink } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+
+import { site } from '../../config/site'
 
 export function AppBar() {
+  const { t } = useTranslation()
+
   return (
     <header
       style={{
@@ -22,22 +27,17 @@ export function AppBar() {
           justifyContent: 'space-between',
         }}
       >
-        {/* Brand */}
-        <a
-          href="/"
-          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
-        >
+        <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <img
             src="/branding/logos/logo-appbar-original.png"
-            alt="do100x"
+            alt={t('appBar.logoAlt')}
             style={{ height: 32, width: 'auto', objectFit: 'contain' }}
           />
         </a>
 
-        {/* Nav */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <a
-            href="https://reader.do100x.com"
+            href={site.reader.url}
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -62,7 +62,7 @@ export function AppBar() {
               e.currentTarget.style.color = 'var(--text-body)'
             }}
           >
-            Reader
+            {t('appBar.reader')}
             <ExternalLink size={13} />
           </a>
         </nav>

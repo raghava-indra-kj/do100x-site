@@ -30,7 +30,6 @@ img {
   max-width: 100%;
 }
 
-/* Scrollbar — match the cream + navy theme */
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(18, 25, 60, 0.28) var(--surface-soft);

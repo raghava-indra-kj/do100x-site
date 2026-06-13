@@ -1,0 +1,61 @@
+{
+  "appBar": {
+    "logoAlt": "do100x",
+    "reader": "Reader"
+  },
+  "hero": {
+    "title": "Do everything <1>100 times better</1>, with our simple AI-powered tools.",
+    "subtitle": "A growing collection of tools for students, working professionals, and entrepreneurs to tackle real problems and do everything 100 times better."
+  },
+  "products": {
+    "heading": "Our Products",
+    "subtitle": "We do not build apps. We build real products that solve your real problems.",
+    "reader": {
+      "name": "Reader",
+      "tagline": "Reading made easy.",
+      "problem": "Reading long things is hard. Articles, books, tutorials — you start, your eyes get tired, you hit a word you don't know, you can't fully understand, you forget what you read, and you have no idea how to use it in real life. So you just stop. It's not your fault. It's just how reading works.",
+      "solution": "Reader solves the reading struggle by breaking long text into short, gentle parts. Tired eyes are calmed by a clean, strain-free layout. Unknown words get instant meaning. Confusing sections become clear through real-world examples and analogies. And simple take-away notes turn reading into real-life action.",
+      "cta": "Open Reader",
+      "features": [
+        {
+          "label": "Small, gentle parts",
+          "text": "Long articles, books, documents — broken into bite-sized pieces that feel light and easy."
+        },
+        {
+          "label": "Easy on your eyes",
+          "text": "A clean, soft layout with gentle colors that keep your eyes fresh, even after hours."
+        },
+        {
+          "label": "Instant word meanings",
+          "text": "Tap any word to see its meaning right away, no leaving the page."
+        },
+        {
+          "label": "Help when you're stuck",
+          "text": "Don't understand a section? The AI explains it with real-world examples and simple analogies."
+        },
+        {
+          "label": "Remember what you read",
+          "text": "Short quizzes after each part lock the learning in, so it stays with you."
+        }
+      ]
+    },
+    "request": {
+      "title": "Request a tool",
+      "description": "Stuck on something no tool seems to solve? Tell me what would make your work easier.",
+      "action": "Share an idea",
+      "emailSubject": "Tool idea for do100x"
+    }
+  },
+  "footer": {
+    "brand": "do100x.com",
+    "about": "do100x builds simple, high-quality, AI-powered tools for students, professionals, and entrepreneurs — each one carefully designed to remove one real problem from your day, so you can spend more time on what actually matters.",
+    "productHeading": "Product",
+    "reader": "Reader",
+    "connectHeading": "Connect",
+    "linkedin": "LinkedIn",
+    "hireMe": "Hire Me",
+    "hireMeSubject": "Let's work together",
+    "copyright": "© {{year}} do100x.com — All rights reserved.",
+    "madeBy": "Made with ❤️ by {{name}}"
+  }
+}

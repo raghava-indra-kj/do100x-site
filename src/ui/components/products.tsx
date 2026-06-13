@@ -1,33 +1,23 @@
 import { Rows3, Eye, Sparkles, BookOpen, GraduationCap, ArrowRight, Lightbulb, ArrowUpRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-const reader = {
-  name: 'Reader',
-  href: 'https://reader.do100x.com',
-  logo: '/branding/logos/reader/logo-original.png',
-  image: '/branding/illustrations/reader-hero.png',
-  tagline: 'Reading made easy.',
-  problem:
-    `Reading long things is hard. Articles, books, tutorials — you start, your eyes get tired, you hit a word you don't know, you can't fully understand, you forget what you read, and you have no idea how to use it in real life. So you just stop. It's not your fault. It's just how reading works.`,
-  solution:
-    `Reader solves the reading struggle by breaking long text into short, gentle parts. Tired eyes are calmed by a clean, strain-free layout. Unknown words get instant meaning. Confusing sections become clear through real-world examples and analogies. And simple take-away notes turn reading into real-life action.`,
-  features: [
-    { Icon: Rows3, label: 'Small, gentle parts', text: 'Long articles, books, documents — broken into bite-sized pieces that feel light and easy.' },
-    { Icon: Eye, label: 'Easy on your eyes', text: 'A clean, soft layout with gentle colors that keep your eyes fresh, even after hours.' },
-    { Icon: BookOpen, label: 'Instant word meanings', text: 'Tap any word to see its meaning right away, no leaving the page.' },
-    { Icon: Sparkles, label: "Help when you're stuck", text: "Don't understand a section? The AI explains it with real-world examples and simple analogies." },
-    { Icon: GraduationCap, label: 'Remember what you read', text: 'Short quizzes after each part lock the learning in, so it stays with you.' },
-  ],
-  note: 'Just open it and start reading.',
-}
+import { site } from '../../config/site'
 
-const developerEmail = import.meta.env.VITE_DEVELOPER_EMAIL
+const readerLogo = '/branding/logos/reader/logo-original.png'
+
+const featureIcons = [Rows3, Eye, BookOpen, Sparkles, GraduationCap]
+
+type Feature = { label: string; text: string }
 
 export function Products() {
+  const { t } = useTranslation()
+  const features = t('products.reader.features', { returnObjects: true }) as unknown as Feature[]
+  const requestHref = `mailto:${site.developer.email}?subject=${encodeURIComponent(t('products.request.emailSubject'))}`
+
   return (
     <section style={{ background: 'var(--surface-soft)', padding: 'clamp(40px, 6vw, 72px) 32px' }}>
       <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto' }}>
 
-        {/* Section header */}
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-xxl)' }}>
           <h2
             style={{
@@ -40,7 +30,7 @@ export function Products() {
               margin: '0 0 var(--space-md) 0',
             }}
           >
-            Our Products
+            {t('products.heading')}
           </h2>
           <p
             style={{
@@ -52,11 +42,10 @@ export function Products() {
               margin: '0 auto',
             }}
           >
-            We do not build apps. We build real products that solve your real problems.
+            {t('products.subtitle')}
           </p>
         </div>
 
-        {/* Reader card */}
         <div
           style={{
             background: 'var(--surface-canvas)',
@@ -67,25 +56,23 @@ export function Products() {
           }}
         >
 
-          {/* Card content */}
           <div style={{ padding: 'clamp(28px, 3.5vw, 44px)' }}>
 
-            {/* Row 1: app name + CTA on same line */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-lg)', flexWrap: 'wrap', marginBottom: 'var(--space-xl)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <img src={reader.logo} alt="" style={{ width: 60, height: 60, objectFit: 'contain' }} />
+                <img src={readerLogo} alt="" style={{ width: 60, height: 60, objectFit: 'contain' }} />
                 <div>
                   <div style={{ fontFamily: 'var(--font-sans)', fontSize: 20, fontWeight: 600, color: 'var(--text-ink)', lineHeight: 1.2 }}>
-                    {reader.name}
+                    {t('products.reader.name')}
                   </div>
                   <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 500, color: 'var(--color-primary)' }}>
-                    {reader.tagline}
+                    {t('products.reader.tagline')}
                   </div>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', flexWrap: 'wrap' }}>
                 <a
-                  href={reader.href}
+                  href={site.reader.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -113,13 +100,12 @@ export function Products() {
                     e.currentTarget.style.transform = 'translateY(0)'
                   }}
                 >
-                  Open Reader
+                  {t('products.reader.cta')}
                   <ArrowRight size={16} />
                 </a>
               </div>
             </div>
 
-            {/* Row 2: problem — full width */}
             <p
               style={{
                 fontFamily: 'var(--font-sans)',
@@ -130,10 +116,9 @@ export function Products() {
                 margin: '0 0 var(--space-sm) 0',
               }}
             >
-              {reader.problem}
+              {t('products.reader.problem')}
             </p>
 
-            {/* Row 3: solution — full width */}
             <p
               style={{
                 fontFamily: 'var(--font-sans)',
@@ -143,13 +128,11 @@ export function Products() {
                 margin: 0,
               }}
             >
-              {reader.solution}
+              {t('products.reader.solution')}
             </p>
 
           </div>
 
-
-          {/* Features — bottom grid, still inside the same card */}
           <div
             className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5"
             style={{
@@ -158,44 +141,46 @@ export function Products() {
               background: 'var(--border-hairline)',
             }}
           >
-            {reader.features.map(({ Icon, label, text }) => (
-              <div
-                key={label}
-                style={{
-                  background: 'var(--surface-canvas)',
-                  padding: 'var(--space-lg)',
-                }}
-              >
-                <span
+            {features.map((feature, index) => {
+              const Icon = featureIcons[index]
+              return (
+                <div
+                  key={feature.label}
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 32,
-                    height: 32,
-                    borderRadius: 'var(--radius-md)',
-                    background: 'rgba(196, 98, 58, 0.1)',
-                    color: 'var(--color-primary)',
-                    marginBottom: 'var(--space-xs)',
+                    background: 'var(--surface-canvas)',
+                    padding: 'var(--space-lg)',
                   }}
                 >
-                  <Icon size={16} />
-                </span>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--text-ink)', marginBottom: 4 }}>
-                  {label}
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 32,
+                      height: 32,
+                      borderRadius: 'var(--radius-md)',
+                      background: 'rgba(196, 98, 58, 0.1)',
+                      color: 'var(--color-primary)',
+                      marginBottom: 'var(--space-xs)',
+                    }}
+                  >
+                    {Icon ? <Icon size={16} /> : null}
+                  </span>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--text-ink)', marginBottom: 4 }}>
+                    {feature.label}
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12.5, lineHeight: 1.55, color: 'var(--text-body)' }}>
+                    {feature.text}
+                  </div>
                 </div>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12.5, lineHeight: 1.55, color: 'var(--text-body)' }}>
-                  {text}
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
         </div>
 
-        {/* Request a tool — slim strip */}
         <a
-          href={`mailto:${developerEmail}?subject=Tool%20idea%20for%20do100x`}
+          href={requestHref}
           className="flex flex-col sm:flex-row sm:items-center"
           style={{
             marginTop: 'var(--space-lg)',
@@ -229,10 +214,10 @@ export function Products() {
             </div>
             <div>
               <div style={{ fontFamily: 'var(--font-sans)', fontSize: 16, fontWeight: 500, color: 'var(--text-ink)' }}>
-                Request a tool
+                {t('products.request.title')}
               </div>
               <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, lineHeight: 1.55, color: 'var(--text-body)' }}>
-                Stuck on something no tool seems to solve? Tell me what would make your work easier.
+                {t('products.request.description')}
               </div>
             </div>
           </div>
@@ -248,7 +233,7 @@ export function Products() {
               color: 'var(--color-primary)',
             }}
           >
-            Share an idea
+            {t('products.request.action')}
             <ArrowUpRight size={16} />
           </span>
         </a>

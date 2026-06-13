@@ -1,4 +1,8 @@
+import { Trans, useTranslation } from 'react-i18next'
+
 export function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section
       style={{
@@ -10,7 +14,6 @@ export function Hero() {
         className="flex flex-col md:flex-row items-center"
         style={{ maxWidth: 'var(--container-max)', margin: '0 auto', gap: 'clamp(24px, 5vw, 56px)' }}
       >
-        {/* Text */}
         <div className="text-center md:text-left" style={{ flex: 1 }}>
           <h1
             style={{
@@ -23,8 +26,10 @@ export function Hero() {
               margin: 0,
             }}
           >
-            Do everything{' '}
-            <span style={{ color: 'var(--color-primary)' }}>100 times better</span>, with our simple AI-powered tools.
+            <Trans
+              i18nKey="hero.title"
+              components={{ 1: <span style={{ color: 'var(--color-primary)' }} /> }}
+            />
           </h1>
           <p
             style={{
@@ -35,11 +40,10 @@ export function Hero() {
               margin: 'var(--space-md) 0 0 0',
             }}
           >
-            A growing collection of tools for students, working professionals, and entrepreneurs to tackle real problems and do everything 100 times better.
+            {t('hero.subtitle')}
           </p>
         </div>
 
-        {/* Illustration */}
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
           <img
             src="/branding/illustrations/hero.png"

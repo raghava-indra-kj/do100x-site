@@ -1,4 +1,4 @@
-import { AppBar } from './ui/components/appbar'
+import { AppBar } from './ui/components/app-bar'
 import { Hero } from './ui/components/hero'
 import { Products } from './ui/components/products'
 import { Footer } from './ui/components/footer'
