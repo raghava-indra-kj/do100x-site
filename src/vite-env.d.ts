@@ -4,6 +4,7 @@ interface ImportMetaEnv {
   readonly VITE_DEVELOPER_NAME: string
   readonly VITE_DEVELOPER_EMAIL: string
   readonly VITE_DEVELOPER_LINKEDIN: string
+  readonly VITE_READER_URL: string
 }
 
 interface ImportMeta {
