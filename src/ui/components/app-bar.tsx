@@ -29,7 +29,7 @@ export function AppBar() {
       >
         <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <img
-            src="/branding/logos/logo-appbar-original.png"
+            src="/branding/logos/do100x-appbar.png"
             alt={t('appBar.logoAlt')}
             style={{ height: 32, width: 'auto', objectFit: 'contain' }}
           />

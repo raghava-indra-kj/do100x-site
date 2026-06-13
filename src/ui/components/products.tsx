@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { site } from '../../config/site'
 
-const readerLogo = '/branding/logos/reader/logo-original.png'
+const readerLogo = '/branding/logos/reader.png'
 
 const featureIcons = [Rows3, Eye, BookOpen, Sparkles, GraduationCap]
 
