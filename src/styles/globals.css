@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "./variables.css";
+
+html {
+  font-family: var(--font-sans);
+  color: var(--text-ink);
+  background-color: var(--surface-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Scrollbar — match the cream + navy theme */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(18, 25, 60, 0.28) var(--surface-soft);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(18, 25, 60, 0.22);
+  border-radius: var(--radius-pill);
+  border: 3px solid var(--surface-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(18, 25, 60, 0.4);
+}
